@@ -1,6 +1,9 @@
 # vue-test
 vue test demo
 
+# 初始化一个环境
+vue init webpack <my-project>
+
 # 学习过程
 1. 菜鸟教程学语法：[菜鸟链接](http://www.runoob.com/vue2/vue-tutorial.html)
     - {{}} , 提供了完全的 JavaScript 表达式支持 
