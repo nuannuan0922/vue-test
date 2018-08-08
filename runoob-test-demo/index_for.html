@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="hehe">
+        <ol>
+            <li v-for="item in list">
+                <p v-html="item.htmlValue">v-html</p>
+                <p :style="{'background': item.bgColor}">v-bind</p>
+                <p v-if="item.ifValue">v-ifValue</p>
+                <p @click="doSomeThing">v-on</p>
+                <p v-show="item.showValue">show</p>
+                <p>{{item.value}}</p>
+            </li>
+            <li>--------------------------------------------------------------------</li>
+            <li v-for="(value, key, index) in object">
+                {{key}} == {{value}} , index 值是 {{index}}
+            </li>
+            <li>--------------------------------------------------------------------</li>
+            <li v-for="n in 10">{{n}}</li>
+            <li>--------------------------------------------------------------------</li>
+            <li v-for="(value, key, index) in 10">
+                {{key}} == {{value}} , index 值是 {{index}}
+            </li>
+        </ol>
+    </div>
+
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: '#hehe',
+        data: {
+            list: [
+                {
+                    htmlValue: '<h1>我是个标题党</h1>',
+                    bgColor: '#00f',
+                    ifValue: 'haha',
+                    showValue: true,
+                    value: '我就是个value'
+                },
+                {
+                    htmlValue: '<h1>我是个标题党</h1>',
+                    bgColor: '#00f',
+                    ifValue: 'haha',
+                    showValue: true,
+                    value: '我就是个value'
+                }
+            ],
+            object: {
+                h: 1,
+                g: 2
+            }
+        },
+        methods: {
+            doSomeThing() {
+                alert('hhh')
+            }
+        }
+    })
+    </script>
+</body>
+</html>

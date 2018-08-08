@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="ai">
+        <input type="text" v-focus>
+        <button v-hello.a.b="hhh">你好</button>
+        <p v-color="getColor">ssss</p>
+    </div>
+
+    <script type="text/javascript">
+        Vue.directive('color', function (el, binding) {
+            el.style.color = binding.value();
+        });
+        Vue.directive('hello', {
+            bind: (...arguments) => {
+                console.log('bind');
+                console.log(arguments);
+            },
+            inserted: () => {
+                console.log('inserted');
+                console.log(arguments);
+            },
+            update: () => {
+                console.log('update');
+                console.log(arguments);
+            },
+            componentUpdate: () => {
+                console.log('componentUpdate');
+                console.log(arguments);
+            },
+            unbind: () => {
+                console.log('update');
+                console.log(unbind);
+            }
+        })
+        // Vue.directive('focus', {
+        //     inserted: (el) => {
+        //         el.focus();
+        //     }
+        // })
+        var vm = new Vue({
+            el: '#ai',
+            directives: {
+                focus: {
+                    inserted: (el) => {
+                        el.focus();
+                    }
+                }
+            },
+            data: {
+                hhh: 'hhhsdf'
+            },
+            methods: {
+                getColor() {
+                    return '#f00'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

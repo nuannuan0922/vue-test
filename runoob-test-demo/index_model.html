@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="ai">
+        <p>单个复选框：</p>
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{checked}}</label>
+        <br>
+        <p>多个复选框：</p>
+        <input type="checkbox" id="runoob" value="runoob" v-model="checkedName">
+        <label for="runoob">runoob</label>
+
+        <input type="checkbox" id="muke" value="muke" v-model="checkedName"><label for="muke">muke</label>
+        <input type="checkbox" id="google" value="google" v-model="checkedName"><label for="google">google</label>
+        <input type="checkbox" id="taobao" value="taobao" v-model="checkedName"><label for="taobao">taobao</label>
+        <br>
+        <p>选择项是：{{checkedName.join(',')}}</p>
+        <hr>
+
+        <p>单选：</p>
+        <input type="radio" id="google1" name="buzhidao" value="google" v-model="pickedName"><label for="google1">goole</label>
+        <input type="radio" id="taobao1" name="buzhidao" value="taobao" v-model="pickedName"><label for="taobao1">taobao</label>
+        <p>单选选中了：{{pickedName}}</p>
+        <hr>
+        <p>select：</p>
+        <label for="sel">请选择：：：</label>
+        <select name="sel" id="sel" v-model="selValue">
+            <option value="google">google</option>
+            <option value="taobao">taobao</option>
+        </select>
+        <hr>
+        <p>修饰符：</p>
+        <input type="number" v-model.number.lazy="num">
+        <p>输入的值是：{{num}}</p>
+    </div>
+
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: '#ai',
+        data: {
+            checked: false,
+            checkedName: ['google'],
+            pickedName: 'google',
+            selValue: 'google',
+            num: 123
+        }
+    })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="start">
+        <p>{{site}}</p>
+        <p>{{url}}</p>
+        <p>{{details()}}</p>
+    </div>
+
+    <script type="text/javascript">
+        let data = {
+                site: 'vue-test',
+                url: 'http://www.runoob.com/vue2/vue-start.html'
+            };
+        var vm = new Vue({
+            el: '#start',
+            data: data,
+            methods: {
+                details() {
+                    return this.site +　"包含了ｖｕｅ的简单例子"
+                }
+            }
+        })
+        // 它们引用相同的对象！
+        document.write(vm.site === data.site) // true
+        document.write("<br>")
+        // 设置属性也会影响到原始数据
+        vm.site = "Runoob"
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="lalala">
+        <p>{{message}}</p>
+        <p>{{reverseMessage}}</p>
+        <p>{{setGet}}</p>
+    </div>
+
+    <script type="text/javascript">
+    let vm = new Vue({
+        el: '#lalala',
+        data: {
+            message: 'lalala'
+        },
+        computed: {
+            reverseMessage() {
+                return this.message.split('').reverse().join('')
+            },
+            setGet: {
+                set(newValue) {
+                    this.message = newValue.split('').reverse().join('');
+                },
+                get() {
+                    return this.message.split('').reverse().join('')
+                }
+            }
+        },
+
+    })
+
+    setTimeout(function () {
+        vm.setGet = 'setGet'
+
+        setTimeout(function () {
+            vm.message = '1234'
+        }, 2000);
+    }, 2000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="ai">
+        <runoob :name="toName"></runoob>
+        <child></child>
+        <eventtest v-on:increase="increaseTotal"></eventtest>
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('eventtest', {
+            template: '<div><button @click="increaseHandler">点我</button><span>点击次数：{{counter}}</span></div>',
+            data: () => ({
+                counter: 0,
+            }),
+            methods: {
+                increaseHandler() {
+                    this.counter += 1;
+                    this.$emit('increase');
+                }
+            }
+        })
+        Vue.component('runoob', {
+            props: {
+                name: {
+                    type: Number,
+                    required: true
+                }
+            },
+            template: '<h1>自动以组件 {{name}}</h1>'
+        })
+
+        var Child = {
+            template: '<h2>这是一个子组件</h2>'
+        }
+        new Vue({
+            el: '#ai',
+            data: {
+                toName: 123
+            },
+            components: {
+                'child': Child
+            },
+            methods: {
+                increaseTotal() {
+                    this.toName += '1'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

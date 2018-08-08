@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="sss">
+        <p v-if="ifValue">if 为 true 显示</p>
+        <p v-else>if 为 false 显示</p>
+        <hr/>
+        <p v-if="ifValue.toLocaleLowerCase() === 'a'">if值是a</p>
+        <p v-else-if="ifValue.toLocaleLowerCase() === 'b'">if值是b</p>
+        <p v-else-if="ifValue.toLocaleLowerCase() === 'c'">if值是c</p>
+        <p v-else>if值是其他</p>
+        <p v-show="ifValue">v-show test</p>
+    </div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: '#sss',
+        data: {
+            ifValue: ''
+        }
+    })
+    </script>
+</body>
+</html>

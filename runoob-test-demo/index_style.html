@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+    .static {
+        color: #fff;
+        border: 1px solid #fff;
+    }
+    .active {
+        width: 300px;
+        height: 30px;
+        background: #0f0;
+    }
+
+    .warning {
+        background: #f00;
+    }
+    </style>
+</head>
+<body>
+    <div id="ai">
+        <div class="static"
+            :class="{ 'active': isActive, 'warning': isWarning}">
+        obj
+        </div>
+        <div class="static" :class="getClass">computed</div>
+        <div class="static" :class="[arrActive, arrWarning]">arr</div>
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#ai',
+            data: {
+                isActive: true,
+                isWarning: true,
+                arrActive: 'active',
+                arrWarning: 'warning'
+            },
+            computed: {
+                getClass() {
+                    return {
+                        active: !!this.isActive,
+                        warning: !!this.isWarning
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

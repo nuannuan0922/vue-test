@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="hehe">
+        <div v-html="message"></div>
+        <div v-bind:style="{'color': color}">sdfasfd</div>
+        <div>三元表达式：{{message ? '支持' : '不支持'}}</div>
+        <div>数组方法调用：{{ arr.reverse().join(',') }}</div>
+        <div v-if="ifTest">v-if test</div>
+        <div v-if="ifTest">
+            <a href="#" v-on:click="doSomething">有本事你点击我呀</a>
+        </div>
+        <div>
+            <input type="text" v-model="inputValue">
+            <p>input 的值是：{{inputValue | suiBian('dierge', message)}}</p>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#hehe',
+            data: {
+                message: '<h1>ｖｕｅ小新手</h1>',
+                color: '#0f0',
+                arr: ['1', '2', '3'],
+                ifTest: true,
+                inputValue: ''
+            },
+            methods: {
+                doSomething(e) {
+                    e.preventDefault();
+                    console.log('ok! i have do')
+                }
+            },
+            filters: {
+                suiBian(value) {
+                    return (value || 'haha') + arguments[1] + arguments[2]
+                }
+            }
+        });
+        vm.arr = [4, 2, 1, 5]
+    </script>
+</body>
+</html>
