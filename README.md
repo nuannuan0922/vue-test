@@ -2,11 +2,17 @@
 vue test demo
 
 # 初始化一个环境
-vue init webpack <my-project>
+- vue init webpack <my-project>
+- 官网原句
 
-# 学习过程
+```
+请注意我们不推荐新手直接使用 vue-cli，尤其是在你还不熟悉基于 Node.js 的构建工具时。
+```
+
+# 学习过程及笔记
 1. 菜鸟教程学语法：[菜鸟链接](http://www.runoob.com/vue2/vue-tutorial.html)
     - {{}} , 提供了完全的 JavaScript 表达式支持 
+        - Mustache 语法不能作用在 HTML 特性上，遇到这种情况应该使用 v-bind 指令
     - v-html
         - 会把子节点替换成html变量
     - v-bind
@@ -55,17 +61,36 @@ vue init webpack <my-project>
     - computed 计算属性
         - 如果提供的是函数，则提供的函数将用作属性 的 getter 。
         - 如果提供的是对象，可包含 set 和 get 属性
-        - 可以使用 methods 来替代 computed，效果上两个都是一样的，但是 computed 是基于它的依赖缓存，只有相关依赖发生改变时才会重新取值。而使用 methods ，在重新渲染的时候，函数总会重新调用执行。
+        - 可以使用 methods 来替代 computed，效果上两个都是一样的，但是 computed 是基于它的依赖 == 缓存 == ，只有相关依赖发生改变时才会重新取值。而使用 methods ，在重新渲染的时候，函数总会重新调用执行。
+        - 当你有一些数据需要随着其它数据变动而变动时，你很容易滥用 watch。通常更好的做法是使用计算属性而不是命令式的 watch 回调。
+
     - watch 
         - vm.$watch 是个实例方法
 
     - Component
         - 注册 component: Vue.component(tagName, options);
         - 注册后调用 <tagName></tagName>
+        - 单个根节点
+
     - directives
         - 钩子函数：
             - bind inserted update componentUpdate unbind
             - 钩子函数的参数：el，binding，
+
+2. 官网教程[链接](https://cn.vuejs.org/v2/guide/)
+    - 基础部分：
+        - 基础部分可以直接跳过，看完菜鸟教程，基础部分和菜鸟教程大多是一模一样的。没必要花太多时间在这块。
+        - 只有当实例被创建时 data 中存在的属性才是响应式的。
+        - 使用 Object.freeze()，这会阻止修改现有的属性，也意味着响应系统无法再追踪变化。
+        - 不要在选项属性或回调上使用箭头函数, 因为this。
+        - 生命周期[图片链接](https://cn.vuejs.org/images/lifecycle.png)
+        - v-once
+        - 对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持。
+        - 模板表达式都被放在沙盒中，只能访问全局变量的一个白名单，如 Math 和 Date 。你不应该在模板表达式中试图访问用户定义的全局变量。
+        - ### slot 插槽
+    - 深入了解组件
+        - 建议组件命名规则：字母全小写且必须包含一个连字符
+        - 
 
 
     

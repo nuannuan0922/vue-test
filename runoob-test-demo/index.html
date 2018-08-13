@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js    "></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="ai">
+        <H1>Hello App</H1>
+        <p>
+            <!-- 使用 router-link 组件来导航. -->
+            <!-- 通过传入 `to` 属性指定链接. -->
+            <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+            <router-link to="/foo">Go to foo</router-link>
+            <router-link to="/bar">Go to bar</router-link>
+        </p>
+        <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+    </div>
+
+    <script type="text/babel">
+    // var vm = new Vue({
+    //     el: '#ai'
+    // })
+
+    // import Foo from './src/components/Foo';
+    // import Bar from './src/components/Bar';
+
+    let Foo = { template: '<div> Foo </div>'};
+    let Bar = { template: '<div> Bar </div>'};
+
+    const routes = [
+        {path: '/foo', component: Foo},
+        {path: '/bar', component: Bar}
+    ]
+
+    const router = new VueRouter({
+        routes
+    });
+
+    const app = new Vue({
+        router
+    }).$mount('#ai');
+    </script>
+</body>
+</html>
